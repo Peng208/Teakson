@@ -87,13 +87,21 @@ $(document).ready(function () {
     /***************** Google Map ******************/
 
     function initialize() {
+        var coordinates = {lat: 23.5629181, lng: 121.3969908};
         var mapCanvas = document.getElementById('map');
         var mapOptions = {
-            center: new google.maps.LatLng(23.5629181, 121.3969908),
-            zoom: 8,
+            center: coordinates,
+            zoom: 7,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        var markerOptions = {
+            position: coordinates,
+            map: map,
+            title: 'Hello World!',
+        }
+        var marker = new google.maps.Marker(markerOptions);
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);

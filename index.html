@@ -37,10 +37,10 @@
 
 <body>
     <!-- Preloader
-	============================================= -->
+    ============================================= -->
     <div class="preloader"><i class="fa fa-circle-o-notch fa-spin fa-2x"></i></div>
     <!-- Header
-	============================================= -->
+    ============================================= -->
     <section class="main-header">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -99,7 +99,7 @@
     </section>
 
     <!-- Welcome
-	============================================= -->
+    ============================================= -->
     <section id="welcome">
         <div class="container">
             <h2>山 腳 <span> 鶴 岡 文 旦</span></h2>
@@ -110,7 +110,7 @@
     </section>
 
     <!-- Services
-	============================================= -->
+    ============================================= -->
     <section id="services">
         <div class="container">
             <h2>What We Do</h2>
@@ -174,7 +174,7 @@
     </section>
 
     <!-- Portfolio
-	============================================= -->
+    ============================================= -->
     <section id="portfolio">
         <div class="container-fluid">
             <h2>關 於 <span>我 們</span></h2>
@@ -275,7 +275,7 @@
         </div>
     </section>
     <!-- Work Process
-	============================================= -->
+    ============================================= -->
     <section id="work-process">
         <div class="container">
             <h2>Work Process</h2>
@@ -302,7 +302,7 @@
         </div>
     </section>
     <!-- Some Fune Facts
-	============================================= -->
+    ============================================= -->
     <section id="fun-facts">
         <div class="container">
             <h2>Some Fun Facts </h2>
@@ -333,7 +333,7 @@
         </div>
     </section>
     <!-- Some Fune Facts
-	============================================= -->
+    ============================================= -->
     <section id="team">
         <div class="container">
             <h2>Our Team</h2>
@@ -380,7 +380,7 @@
         </div>
     </section>
     <!-- Testimonials
-	============================================= -->
+    ============================================= -->
     <section id="testimonials">
         <div class="container">
             <h2>Testimonials</h2>
@@ -418,7 +418,7 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
         </div>
     </section>
     <!-- Contact Us
-	============================================= -->
+    ============================================= -->
     <div class="container" id="contact" name="contact">
         <div class="row">
         <br>
@@ -427,7 +427,8 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
             <br>
             <br>
             <div class="col-lg-4">
-                <h2>果 園 資 訊</h2>
+                <h2><span>資 訊</span></h2>
+                <hr class="sep">
                 <p><span class="icon icon-home"></span> Some Address 987, NY<br/>
                     <span class="icon icon-phone"></span> +34 9884 4893 <br/>
                     <span class="icon icon-mobile"></span> +34 59855 9853 <br/>
@@ -435,41 +436,84 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
                     <span class="icon icon-twitter"></span> <a href="#"> @blacktie_co </a> <br/>
                     <span class="icon icon-facebook"></span> <a href="#"> BlackTie Agency </a> <br/>
                 </p>
-                <h2>果 園 <span>位 置</span></h2>
+                <br>
+                <h2><span>位 置</span></h2>
+                <hr class="sep">
                 <div id="map" style="position: relative;"></div>
             </div><!-- col -->
 
-            <div class="col-lg-4">
+            <div class="col-lg-8">
                 <div class="container">
-                    <h2>支 持 我 們</h2>
-                    <hr class="sep">
-                    <p>即 刻 聯 絡</p>
-                    <div class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="col-md-9 col-md-offset-1 wow fadeInUp" data-wow-delay=".3s">
+                        <h2>支 持 我 們</h2>
+                        <hr class="sep">
+                        <p>即 刻 聯 絡</p>
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="Name" placeholder="Name">
+                                <input type="text" class="form-control" id="Purchaser" placeholder="Purchaser" name="Purchaser" value="" required dir="auto">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="Email" placeholder="Email">
+                                <input type="text" class="form-control" id="Receiver" placeholder="Receiver" name="Receiver" value="" required dir="auto">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+                                <input type="text" class="form-control" id="Email" placeholder="Email" name="Email" value="" required dir="auto">
                             </div>
-                            <a href="#" class="btn-block">Send</a>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="Phone" placeholder="Phone" name="Phone" value="" required dir="auto">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="Address" placeholder="Address" name="Address" value="" required dir="auto">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" id="Message" placeholder="Message" name="Message" value="" required dir="auto"></textarea>
+                            </div>
+                            <input type="submit" class="btn-block" value="Send" onclick="postToGoogle();return false">
                         </form>
                     </div>
                 </div>
             </div><!-- col -->
-        
-        </div><!-- row -->
-    
-    </div><!-- container -->
 
+        </div><!-- row -->
+    </div><!-- container -->
+    <script type="text/javascript">
+        function postToGoogle() {
+            var purchaser = document.getElementById("Purchaser").value;
+            var receiver = document.getElementById("Receiver").value;
+            var email = document.getElementById("Email").value;
+            var phone = document.getElementById("Phone").value;
+            var address = document.getElementById("Address").value;
+            var message = document.getElementById("Message").value;
+
+            $.ajax({
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSfW6_dHtCd2YeVODlGjVX2S5u3zAgIGzhxueTNp9ofmYOQDxQ/formResponse",
+                data: {
+                    "entry.1432076687": purchaser,
+                    "entry.1523642760": receiver,
+                    "entry.1132965730": email,
+                    "entry.2003493896": phone,
+                    "entry.1228450244": address,
+                    "entry.1568875704": message,
+                },
+                type: "POST",
+                //dataType: "xml",
+                statusCode: {
+                    0: function() {
+                        console.log("successful")
+                        //Success message
+                    },
+                    200: function() {
+                        console.log("failed")
+                        //Success Message
+                    }
+                }
+            });
+        }
+    </script>
     <!-- Google Map
-	============================================= -->
+    ============================================= -->
     <!-- <div id="map" style="position: relative;"></div> -->
     <!-- Footer
-	============================================= -->
+    ============================================= -->
     <footer>
         <div class="container">
             <h1>Rise</h1>

@@ -5,7 +5,8 @@ jQuery(document).ready(function() {
         send form to google form
     */
     $('.submit-form').on('submit', function(e) {
-    	postToGoogle();
+        postToGoogle();
+        // window.location.replace("#team");
     });
 
     function postToGoogle() {

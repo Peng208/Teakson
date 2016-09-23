@@ -449,7 +449,7 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
                         <h2>支 持 我 們</h2>
                         <hr class="sep">
                         <p>即 刻 聯 絡</p>
-                        <form>
+                        <form role="form" action="" class="submit-form">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="Purchaser" placeholder="Purchaser" name="Purchaser" value="" required dir="auto">
                             </div>
@@ -468,7 +468,7 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
                             <div class="form-group">
                                 <textarea class="form-control" rows="3" id="Message" placeholder="Message" name="Message" value="" required dir="auto"></textarea>
                             </div>
-                            <input type="submit" class="btn-block" value="Send" onclick="postToGoogle();return false">
+                            <input type="submit" class="btn-block" value="Send">
                         </form>
                     </div>
                 </div>
@@ -476,40 +476,7 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
 
         </div><!-- row -->
     </div><!-- container -->
-    <script type="text/javascript">
-        function postToGoogle() {
-            var purchaser = document.getElementById("Purchaser").value;
-            var receiver = document.getElementById("Receiver").value;
-            var email = document.getElementById("Email").value;
-            var phone = document.getElementById("Phone").value;
-            var address = document.getElementById("Address").value;
-            var message = document.getElementById("Message").value;
 
-            $.ajax({
-                url: "https://docs.google.com/forms/d/e/1FAIpQLSfW6_dHtCd2YeVODlGjVX2S5u3zAgIGzhxueTNp9ofmYOQDxQ/formResponse",
-                data: {
-                    "entry.1432076687": purchaser,
-                    "entry.1523642760": receiver,
-                    "entry.1132965730": email,
-                    "entry.2003493896": phone,
-                    "entry.1228450244": address,
-                    "entry.1568875704": message,
-                },
-                type: "POST",
-                //dataType: "xml",
-                statusCode: {
-                    0: function() {
-                        console.log("successful")
-                        //Success message
-                    },
-                    200: function() {
-                        console.log("failed")
-                        //Success Message
-                    }
-                }
-            });
-        }
-    </script>
     <!-- Google Map
     ============================================= -->
     <!-- <div id="map" style="position: relative;"></div> -->
@@ -534,6 +501,7 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
     <!-- JS PLUGINS -->
     <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scripts.js"></script>
     <script src="plugins/waypoints/jquery.waypoints.min.js"></script>
     <script src="plugins/countTo/jquery.countTo.js"></script>
     <script src="plugins/inview/jquery.inview.min.js"></script>

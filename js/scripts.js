@@ -5,8 +5,25 @@ jQuery(document).ready(function() {
         send form to google form
     */
     $('.submit-form').on('submit', function(e) {
-        postToGoogle();
-        window.location.replace("#team");
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+                postToGoogle();
+                return true;
+            } else {
+                swal("Cancelled", "", "error");
+                return false;
+            }
+        });
         return false;
     });
 
@@ -34,12 +51,14 @@ jQuery(document).ready(function() {
                 0: function() {
                     console.log("successful")
                     //Success message
-                    alert('感 謝 您 的 訂 購!');
+                    swal("感 謝 您 的 訂 購!", "", "success")
+                    window.location.reload();
                 },
                 200: function() {
                     console.log("failed")
                     //Success Message
-                    alert('訂 購 失 敗!');
+                    swal("訂 購 失 敗!", "", "error");
+                    window.location.replace("#contact");
                 }
             }
         });

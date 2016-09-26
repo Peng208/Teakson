@@ -102,6 +102,10 @@ $(document).ready(function () {
             title: 'Hello World!',
         }
         var marker = new google.maps.Marker(markerOptions);
+        marker.addListener('click', function() {
+            map.setZoom(11);
+            map.setCenter(marker.getPosition());
+        });
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);

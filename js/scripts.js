@@ -4,6 +4,17 @@ jQuery(document).ready(function() {
     /*
         send form to google form
     */
+    $("[name='my-checkbox']").bootstrapSwitch();
+    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+        if (state) { //this is true if the switch is on
+            $('.query-form').show();
+            $('.submit-form').hide();
+        } else {
+            $('.submit-form').show();
+            $('.query-form').hide();
+        }
+    });
+
     $('.submit-form').on('submit', function(e) {
         swal({
             title: "Are you sure?",

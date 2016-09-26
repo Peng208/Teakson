@@ -14,14 +14,15 @@ jQuery(document).ready(function() {
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel plx!",
             closeOnConfirm: false,
-            closeOnCancel: false
+            closeOnCancel: false,
+            showLoaderOnConfirm: true
         }, function(isConfirm) {
             if (isConfirm) {
-                postToGoogle();
-                return true;
+                setTimeout(function () {
+                    postToGoogle();
+                }, 2000);
             } else {
                 swal("Cancelled", "", "error");
-                return false;
             }
         });
         return false;
@@ -51,14 +52,27 @@ jQuery(document).ready(function() {
                 0: function() {
                     console.log("successful")
                     //Success message
-                    swal("感 謝 您 的 訂 購!", "", "success")
-                    window.location.reload();
+                    swal({
+                        title: "感 謝 您 的 訂 購!",
+                        text: "",
+                        type: "success",
+                        closeOnConfirm: false,
+                    }, function (){
+                        window.location.reload(true);
+                    });
+                    
                 },
                 200: function() {
                     console.log("failed")
                     //Success Message
-                    swal("訂 購 失 敗!", "", "error");
-                    window.location.replace("#contact");
+                    swal({
+                        title: "訂 購 失 敗!",
+                        text: "",
+                        type: "error",
+                        closeOnConfirm: false,
+                    }, function (){
+                        window.location.replace("#contact");
+                    });
                 }
             }
         });

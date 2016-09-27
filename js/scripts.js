@@ -39,6 +39,34 @@ jQuery(document).ready(function() {
         return false;
     });
 
+    $('.query-form').on('submit', function(e) {
+        swal({
+            title: "An input!",
+            text: "Write something interesting:",
+            type: "input",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            animation: "slide-from-top",
+            inputPlaceholder: "Write something",
+            showLoaderOnConfirm: true
+        }, function(inputValue) {
+            if (inputValue === false)
+                return false;
+            if (inputValue === "") {
+                swal.showInputError("You need to write something!");
+                return false;
+            }
+            setTimeout(function () {
+                // to do: getFromGoogle();
+                swal("Good job!", "You wrote: " + inputValue, "success");
+            }, 2000);
+        });
+        return false;
+    });
+
     function postToGoogle() {
         var purchaser = document.getElementById("Purchaser").value;
         var receiver = document.getElementById("Receiver").value;

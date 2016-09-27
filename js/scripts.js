@@ -4,7 +4,14 @@ jQuery(document).ready(function() {
     /*
         send form to google form
     */
-    $("[name='my-checkbox']").bootstrapSwitch();
+    $("[name='my-checkbox']").bootstrapSwitch({
+        onColor: "primary",
+        offColor: "info",
+        onText: "Review",
+        offText: "Request",
+        labelText: "Order",
+        size: "large",
+    });
     $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
         if (state) { //this is true if the switch is on
             $('.query-form').show();

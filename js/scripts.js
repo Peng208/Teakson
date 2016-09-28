@@ -7,8 +7,8 @@ jQuery(document).ready(function() {
     $("[name='my-checkbox']").bootstrapSwitch({
         onColor: "primary",
         offColor: "info",
-        onText: "Review",
-        offText: "Request",
+        onText: "Request",
+        offText: "Review",
         labelText: "Order",
         size: "large",
     });

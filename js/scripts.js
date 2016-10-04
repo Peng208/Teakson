@@ -29,8 +29,8 @@ jQuery(document).ready(function() {
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
+            confirmButtonText: "Yes, 確定 訂購!",
+            cancelButtonText: "No, 取消 訂購!",
             closeOnConfirm: false,
             closeOnCancel: false,
             showLoaderOnConfirm: true
@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
                     postToGoogle();
                 }, 2000);
             } else {
-                swal("Cancelled", "", "error");
+                swal("Cancelled", "取消 訂購!", "error");
             }
         });
         return false;
@@ -53,8 +53,8 @@ jQuery(document).ready(function() {
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
+            confirmButtonText: "Yes, 確定 查詢!",
+            cancelButtonText: "No, 取消 查詢!",
             closeOnConfirm: false,
             closeOnCancel: false,
             showLoaderOnConfirm: true
@@ -64,7 +64,7 @@ jQuery(document).ready(function() {
                     google.load('visualization', '1.0', {'packages':['corechart'], 'callback': getFromGoogle});
                 }, 2000);
             } else {
-                swal("Cancelled", "", "error");
+                swal("Cancelled", "取消 查詢", "error");
             }
         });
         return false;
@@ -112,7 +112,7 @@ jQuery(document).ready(function() {
             table += 'Date: ' + date + '\n';
         }
         if (table === "")
-            swal("Good job!", "查無資料", "error");
+            swal("Oops...", "查 無 資 料", "error");
         else
             swal("Good job!", table, "success");
     }

@@ -78,7 +78,7 @@ jQuery(document).ready(function() {
       var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1HFJtE_3F6upJR_gIR9u9f4q1tF4POK9t385WCAMo9Hw/edit#gid=631696526', opts);
 
       // Optional request to return only column C and the sum of column B, grouped by C members.
-      query.setQuery("select * where E = " + phone);
+      query.setQuery("select * where E = '" + phone + "'");
 
       // Send the query with a callback function.
       query.send(handleQueryResponse);

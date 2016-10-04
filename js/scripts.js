@@ -48,31 +48,74 @@ jQuery(document).ready(function() {
 
     $('.query-form').on('submit', function(e) {
         swal({
-            title: "An input!",
-            text: "Write something interesting:",
-            type: "input",
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel plx!",
             closeOnConfirm: false,
-            animation: "slide-from-top",
-            inputPlaceholder: "Write something",
+            closeOnCancel: false,
             showLoaderOnConfirm: true
-        }, function(inputValue) {
-            if (inputValue === false)
-                return false;
-            if (inputValue === "") {
-                swal.showInputError("You need to write something!");
-                return false;
+        }, function(isConfirm) {
+            if (isConfirm) {
+                setTimeout(function () {
+                    google.load('visualization', '1.0', {'packages':['corechart'], 'callback': getFromGoogle});
+                }, 2000);
+            } else {
+                swal("Cancelled", "", "error");
             }
-            setTimeout(function () {
-                // to do: getFromGoogle();
-                swal("Good job!", "You wrote: " + inputValue, "success");
-            }, 2000);
         });
         return false;
     });
+
+    function getFromGoogle() {
+      var opts = {sendMethod: 'auto'};
+      var phone = document.getElementById("QPhone").value;
+
+      // Replace the data source URL on next line with your data source URL.
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1HFJtE_3F6upJR_gIR9u9f4q1tF4POK9t385WCAMo9Hw/edit#gid=631696526', opts);
+
+      // Optional request to return only column C and the sum of column B, grouped by C members.
+      query.setQuery("select * where E = " + phone);
+
+      // Send the query with a callback function.
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+      // Called when the query response is returned.
+        if (response.isError()) {
+           // alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+           return;
+        }
+
+        var data = response.getDataTable();
+        var numrows = data.getNumberOfRows();
+        var table = '';
+
+        for (var row=0; row < numrows; row++) {
+
+            var date = data.getValue(row, 0);
+            // var purchaser = data.getValue(row, 1);
+            // var receiver = data.getValue(row, 2);
+            // var email = data.getValue(row, 3);
+            // var phone = data.getValue(row, 4);
+            // var address = data.getValue(row, 5);
+            // var payment = data.getValue(row, 6);
+            // var terms = data.getValue(row, 7);
+            // var pomelo = data.getValue(row, 8);
+            // var peiyu = data.getValue(row, 9);
+            // var remark = data.getValue(row, 10);
+
+            table += 'Date: ' + date + '\n';
+        }
+        if (table === "")
+            swal("Good job!", "查無資料", "error");
+        else
+            swal("Good job!", table, "success");
+    }
 
     function postToGoogle() {
         var purchaser = document.getElementById("Purchaser").value;

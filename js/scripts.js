@@ -93,20 +93,19 @@ jQuery(document).ready(function() {
 
         for (var row=0; row < numrows; row++) {
 
-            var date = data.getValue(row, 0);
-            // var purchaser = data.getValue(row, 1);
-            // var receiver = data.getValue(row, 2);
-            // var email = data.getValue(row, 3);
-            // var phone = data.getValue(row, 4);
-            // var address = data.getValue(row, 5);
-            // var payment = data.getValue(row, 6);
-            // var terms = data.getValue(row, 7);
-            // var pomelo = data.getValue(row, 8);
-            // var peiyu = data.getValue(row, 9);
-            // var remark = data.getValue(row, 10);
-
-            table += 'Date: ' + date + '\n';
+            var date      = ["Date:\t", data.getValue(row, 0), "\n"].join("");
+            var purchaser = ["Purchaser:\t", data.getValue(row, 1), "\n"].join("");
+            var receiver  = ["Receiver:\t", data.getValue(row, 2), "\n"].join("");
+            var email     = ["E-Mail:\t", data.getValue(row, 3), "\n"].join("");
+            var phone     = ["Phone:\t", data.getValue(row, 4), "\n"].join("");
+            var address   = ["Address:\t", data.getValue(row, 5), "\n"].join("");
+            // var payment   = ["Date:\t", data.getValue(row, 6), "\n"].join("");
+            // var pomelo    = ["Date:\t", data.getValue(row, 7), "\n"].join("");
+            // var peiyu     = ["Date:\t", data.getValue(row, 8), "\n"].join("");
+            var remark    = ["Remark:\t", data.getValue(row, 9), "\n"].join("");
+            table += [date, purchaser, receiver, email, phone, address, remark].join("");
         }
+
         if (table === "")
             swal("Oops...", "查無資料", "error");
         else

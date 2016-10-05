@@ -4,23 +4,19 @@ jQuery(document).ready(function() {
     /*
         send form to google form
     */
-    $("[name='my-checkbox']").bootstrapSwitch({
-        onColor: "primary",
-        offColor: "info",
-        onText: "Request",
-        offText: "Review",
-        labelText: "Order",
-        size: "large",
-    });
-    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-        if (state) { //this is true if the switch is on
-            $('.query-form').show();
-            $('.submit-form').hide();
-        } else {
-            $('.submit-form').show();
-            $('.query-form').hide();
-        }
-    });
+    $('#request').on('click', function (e) {
+        $('.submit-form').show();
+        $('.query-form').hide();
+        return true;
+    })
+    $('#review').on('click', function (e) {
+        $('.query-form').show();
+        $('.submit-form').hide();
+        return true;
+    })
+    $('#modify').on('click', function (e) {
+        e.preventDefault();
+    })
 
     $('.submit-form').on('submit', function(e) {
         swal({
@@ -112,7 +108,7 @@ jQuery(document).ready(function() {
             table += 'Date: ' + date + '\n';
         }
         if (table === "")
-            swal("Oops...", "查 無 資 料", "error");
+            swal("Oops...", "查無資料", "error");
         else
             swal("Good job!", table, "success");
     }

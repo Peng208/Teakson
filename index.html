@@ -15,7 +15,6 @@
 
     <!-- Bootstrap Css -->
     <link href="bootstrap-assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="plugins/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
     <!-- Style -->
     <link href="plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="plugins/owl-carousel/owl.theme.css" rel="stylesheet">
@@ -449,7 +448,11 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
                         <h2>支 持 我 們</h2>
                         <hr class="sep">
                         <p>即 刻 聯 絡</p>
-                        <input type="checkbox" name="my-checkbox">
+                        <div class="btn-group btn-group-justified">
+                            <a class="btn btn-primary btn-lg" id="request">新增訂單</a>
+                            <a class="btn btn-info btn-lg" id="review">查詢訂單</a>
+                            <!-- <a class="btn btn-default btn-lg disabled" id="modify">修改訂單</a> -->
+                        </div>
                         <form role="form" action="" method="post" class="submit-form">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="Purchaser" placeholder="Purchaser" name="Purchaser" value="" required dir="auto">
@@ -507,7 +510,6 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap-assets/js/bootstrap.min.js"></script>
-    <script src="plugins/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
     <script src="js/custom.js"></script>
     <!-- JS PLUGINS -->
     <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
